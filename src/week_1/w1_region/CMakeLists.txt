@@ -1,0 +1,1 @@
+add_executable(w1_region main.cpp)
