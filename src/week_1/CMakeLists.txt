@@ -1,3 +1,4 @@
 add_subdirectory(w1_matrix_sum)
 add_subdirectory(w1_averange_temp)
 add_subdirectory(w1_plotmost)
+add_subdirectory(w1_region)
