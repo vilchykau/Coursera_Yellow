@@ -1,0 +1,1 @@
+add_executable(w2_tiest_ispolly main.cpp)

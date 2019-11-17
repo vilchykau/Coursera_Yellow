@@ -1,1 +1,5 @@
 add_subdirectory(w2_diekompozitsiia_proghrammy)
+add_subdirectory(w2_tiesty_dlia_funktsii_getdistinctrealrootcount)
+add_subdirectory(w2_tiesty_dlia_klassa_rational)
+add_subdirectory(w2_tiesty_dlia_funktsii_ispalindrom)
+add_subdirectory(w2_tiesty_dlia_klassa_person)

@@ -1,0 +1,1 @@
+add_executable(w2_getdist main.cpp)
