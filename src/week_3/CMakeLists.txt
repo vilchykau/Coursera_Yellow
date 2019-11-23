@@ -1,2 +1,3 @@
 add_subdirectory(phone_nuber)
 add_subdirectory(rectangle)
+add_subdirectory(decompos_2)
