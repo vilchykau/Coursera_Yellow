@@ -1,12 +1,13 @@
-#pragma once
+//
+// Created by stas on 23.11.2019.
+//
 
-#include <string>
+#include "phone_number.h"
+#include <sstream>
+#include <exception>
 
-using namespace std;
 
-class PhoneNumber {
-public:
-    /* Принимает строку в формате +XXX-YYY-ZZZZZZ
+/* Принимает строку в формате +XXX-YYY-ZZZZZZ
        Часть от '+' до первого '-' - это код страны.
        Часть между первым и вторым символами '-' - код города
        Всё, что идёт после второго символа '-' - местный номер.
@@ -21,15 +22,37 @@ public:
        * 1-2-333 - некорректный номер - не начинается на '+'
        * +7-1233 - некорректный номер - есть только код страны и города
     */
-    explicit PhoneNumber(const string &international_number);
 
-    string GetCountryCode() const;
-    string GetCityCode() const;
-    string GetLocalNumber() const;
-    string GetInternationalNumber() const;
+PhoneNumber::PhoneNumber(const string &international_number) {
+    std::stringstream ss(international_number);
 
-private:
-    string country_code_;
-    string city_code_;
-    string local_number_;
-};
+    bool ok = true;
+
+    ok = (ss.peek() == '+');
+    ss.get();
+    ok = ok && std::getline(ss, country_code_, '-');
+    ok = ok && std::getline(ss, city_code_, '-');
+    ok = ok && ss >> local_number_;
+
+    if(!ok){
+        throw std::invalid_argument("");
+    }
+}
+
+string PhoneNumber::GetCountryCode() const {
+    return country_code_;
+}
+
+string PhoneNumber::GetCityCode() const {
+    return city_code_;
+}
+
+string PhoneNumber::GetLocalNumber() const {
+    return local_number_;
+}
+
+string PhoneNumber::GetInternationalNumber() const {
+    std::stringstream ss;
+    ss << '+' << country_code_<< '-' << city_code_ << '-' << local_number_;
+    return ss.str();
+}
