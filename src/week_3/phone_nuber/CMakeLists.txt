@@ -1,0 +1,1 @@
+add_executable(phone_number main.cpp)
