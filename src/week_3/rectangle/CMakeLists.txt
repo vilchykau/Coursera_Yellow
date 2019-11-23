@@ -1,0 +1,1 @@
+add_executable(rectangle main.cpp rectangle.cpp rectangle.h)
